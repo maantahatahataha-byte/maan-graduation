@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دعوة تخرج | معن طه — جامعة المشرق</title>
+
+  <!-- Tailwind CSS للتخطيط المتجاوب الحديث -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- خطوط Amiri للنصوص الكلاسيكية والآيات القرآنية، و Tajawal للواجهة العربية الحديثة -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            amiri: ['Amiri', 'serif'],
+            tajawal: ['Tajawal', 'sans-serif'],
+          },
+          colors: {
+            royal: {
+              950: '#040814',
+              900: '#081024',
+              800: '#0f1c38',
+              700: '#17294f',
+            },
+            emeraldLux: {
+              900: '#062821',
+              700: '#0d4a3d',
+              400: '#2dd4bf',
+            },
+            gold: {
+              200: '#fdf2c2',
+              300: '#f7e296',
+              400: '#e8c55a',
+              500: '#d4af37',
+              600: '#aa8218',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --gold-bright: #f7e296;
+      --gold-mid: #d4af37;
+      --gold-deep: #9b7312;
+      --royal-bg: #050a18;
+      --emerald-accent: #0f5143;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -5%, rgba(212, 175, 55, 0.2) 0%, transparent 62%),
+        radial-gradient(ellipse 65% 45% at 12% 22%, rgba(15, 81, 67, 0.34) 0%, transparent 58%),
+        radial-gradient(ellipse 65% 45% at 88% 78%, rgba(23, 41, 79, 0.55) 0%, transparent 60%),
+        linear-gradient(180deg, #070e22 0%, #040814 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* شبكة زخرفية خفيفة في الخلفية */
+    .geometric-backdrop {
+      background-image:
+        radial-gradient(rgba(232, 197, 90, 0.13) 1.1px, transparent 1.1px),
+        radial-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px);
+      background-size: 32px 32px, 64px 64px;
+      background-position: 0 0, 16px 16px;
+      mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.82) 15%, rgba(0, 0, 0, 0.08) 88%);
+    }
+
+    /* جزيئات ذهبية طافية هادئة في الخلفية */
+    .sparkle-dot {
+      position: fixed;
+      border-radius: 9999px;
+      background: radial-gradient(circle, #fdf2c2 0%, #d4af37 60%, transparent 100%);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 1;
+      animation: floatSparkle var(--dur, 7s) ease-in-out var(--delay, 0s) infinite;
+    }
+
+    @keyframes floatSparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.6);
+      }
+      45% {
+        opacity: var(--peak-opacity, 0.55);
+      }
+      50% {
+        opacity: var(--peak-opacity, 0.55);
+        transform: translateY(-16px) scale(1.1);
+      }
+    }
+
+    /* طبقات الاحتفال والوميض الذهبي عند فتح الظرف */
+    #celebrationLayer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 45;
+    }
+
+    .shimmer-wave {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      transform: translate(-50%, -50%) scale(0.2);
+      border: 2px solid rgba(247, 226, 150, 0.85);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.55), inset 0 0 24px rgba(247, 226, 150, 0.35);
+      animation: shimmerExpand 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes shimmerExpand {
+      0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(0.2);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(26);
+      }
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: 46%;
+      left: 50%;
+      width: var(--w, 10px);
+      height: var(--h, 6px);
+      border-radius: var(--r, 2px);
+      background: var(--c, #e8c55a);
+      box-shadow: 0 0 8px rgba(247, 226, 150, 0.45);
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: confettiBurst var(--cdur, 1.8s) cubic-bezier(0.18, 0.82, 0.28, 1) var(--cdelay, 0s) forwards;
+    }
+
+    @keyframes confettiBurst {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translate(0px, 0px) rotate(0deg) scale(0.8);
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform:
+          translate(-50%, -50%)
+          translate(var(--tx, 0px), var(--ty, 180px))
+          rotate(var(--rot, 540deg))
+          scale(0.95);
+      }
+    }
+
+    /* الظرف المخملي ثلاثي الأبعاد */
+    .velvet-stage {
+      perspective: 1500px;
+    }
+
+    .velvet-envelope {
+      position: relative;
+      transform-style: preserve-3d;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(212, 175, 55, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 80% 85%, rgba(15, 81, 67, 0.35) 0%, transparent 55%),
+        linear-gradient(155deg, #162547 0%, #0c162e 55%, #070e1f 100%);
+      border: 1.5px solid rgba(232, 197, 90, 0.52);
+      box-shadow:
+        0 30px 75px rgba(0, 0, 0, 0.78),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 0 40px rgba(212, 175, 55, 0.12);
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+    }
+
+    /* ملمس مخملي ناعم فوق الظرف */
+    .velvet-envelope::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.012) 0px,
+        rgba(255, 255, 255, 0.012) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* غطاء الظرف العلوي ثلاثي الأبعاد */
+    .velvet-flap-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      transform-style: preserve-3d;
+      transform-origin: top center;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 4;
+    }
+
+    .velvet-flap-face {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, #1f335e 0%, #12203f 72%, #0d1830 100%);
+      clip-path: polygon(0 0, 50% 90%, 100% 0);
+      backface-visibility: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    /* حد ذهبي رفيع أسفل الطيّة */
+    .velvet-flap-trim {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), rgba(247, 226, 150, 0.72), rgba(212, 175, 55, 0.15));
+      clip-path: polygon(0 0, 50% 90%, 100% 0);
+      transform: translateY(1.5px);
+      z-index: 3;
+      pointer-events: none;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* الجيب السفلي المخملي للظرف */
+    .velvet-pocket {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13, 74, 61, 0.16) 0%, rgba(7, 13, 28, 0.94) 100%);
+      clip-path: polygon(0 36%, 50% 62%, 100% 36%, 100% 100%, 0 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .velvet-envelope.is-opening .velvet-flap-wrap,
+    .velvet-envelope.is-opening .velvet-flap-trim {
+      transform: rotateX(172deg);
+    }
+
+    .velvet-envelope.is-opening {
+      transform: translateY(-10px) scale(1.02);
+      opacity: 0.15;
+    }
+
+    /* ختم شمعي ذهبي بارز محفور عليه «م.ط» */
+    .wax-seal-gold {
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 26%, #fdf2c2 0%, #e8c55a 36%, #c69823 72%, #7d5909 100%);
+      box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.6),
+        0 0 0 4px rgba(212, 175, 55, 0.22),
+        0 0 28px rgba(232, 197, 90, 0.35),
+        inset 0 2px 5px rgba(255, 255, 255, 0.6),
+        inset 0 -3px 6px rgba(74, 50, 3, 0.65);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+
+    .wax-seal-gold::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 9999px;
+      border: 1.5px dashed rgba(68, 45, 3, 0.45);
+      pointer-events: none;
+    }
+
+    .velvet-envelope:hover .wax-seal-gold {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.65),
+        0 0 0 6px rgba(232, 197, 90, 0.28),
+        0 0 38px rgba(247, 226, 150, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.7),
+        inset 0 -3px 6px rgba(74, 50, 3, 0.7);
+    }
+
+    /* بطاقة الدعوة الملكية بإطار هندسي مزدوج */
+    .regal-card {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14) 0%, transparent 52%),
+        radial-gradient(circle at 100% 100%, rgba(15, 81, 67, 0.22) 0%, transparent 55%),
+        linear-gradient(165deg, rgba(15, 28, 56, 0.96) 0%, rgba(7, 14, 34, 0.98) 100%);
+      border: 1px solid rgba(232, 197, 90, 0.42);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+      backdrop-filter: blur(14px);
+    }
+
+    .regal-inner-frame {
+      border: 1px solid rgba(232, 197, 90, 0.22);
+      box-shadow: inset 0 0 32px rgba(212, 175, 55, 0.05);
+    }
+
+    .gold-foil-text {
+      background: linear-gradient(135deg, #ffffff 0%, #fdf2c2 38%, #e8c55a 72%, #b68918 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 16px rgba(212, 175, 55, 0.24));
+    }
+
+    @keyframes regalReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(26px) scale(0.975);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .regal-reveal {
+      animation: regalReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes tabPageFade {
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tab-page-enter {
+      animation: tabPageFade 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .nav-tab-btn[aria-selected="true"] {
+      background: linear-gradient(135deg, #fdf2c2 0%, #e8c55a 55%, #c69823 100%);
+      color: #040814;
+      border-color: rgba(253, 242, 194, 0.85);
+      box-shadow: 0 8px 22px rgba(212, 175, 55, 0.28);
+    }
+
+    .nav-tab-btn[aria-selected="false"] {
+      background: rgba(15, 28, 56, 0.72);
+      color: #e2e8f0;
+      border-color: rgba(232, 197, 90, 0.22);
+    }
+
+    .nav-tab-btn[aria-selected="false"]:hover {
+      border-color: rgba(232, 197, 90, 0.48);
+      color: #fdf2c2;
+    }
+
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.42);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="relative selection:bg-gold-500 selection:text-royal-950">
+
+  <!-- طبقة الزخرفة الهندسية -->
+  <div class="geometric-backdrop fixed inset-0 pointer-events-none z-0"></div>
+
+  <!-- جزيئات ذهبية طافية محيطة -->
+  <div id="ambientSparkles" aria-hidden="true"></div>
+
+  <!-- طبقة الوميض والقصاصات الاحتفالية عند فتح الظرف -->
+  <div id="celebrationLayer" aria-hidden="true"></div>
+
+  <!-- شريط التنبيهات العائم (Toast) -->
+  <div
+    id="toastBanner"
+    role="status"
+    aria-live="polite"
+    class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-md transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none"
+  >
+    <div id="toastInner" class="flex items-center justify-between gap-3 rounded-2xl border border-gold-400/55 bg-royal-800/95 px-4 py-3 text-sm font-medium text-gold-200 shadow-2xl backdrop-blur-md">
+      <span id="toastMessage">تم تنفيذ الإجراء بنجاح</span>
+      <button
+        type="button"
+        onclick="hideToast()"
+        aria-label="إغلاق التنبيه"
+        class="rounded-lg p-1 text-slate-300 hover:bg-white/10 hover:text-white transition"
+      >
+        ✕
+      </button>
+    </div>
+  </div>
+
+  <!-- الحاوية الرئيسية -->
+  <main class="relative z-10 mx-auto w-full max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
+
+    <!-- الظرف المخملي التفاعلي المغلق -->
+    <section id="envelopeSection" class="velvet-stage flex flex-col items-center justify-center min-h-[76vh] text-center">
+      <div
+        id="velvetEnvelope"
+        role="button"
+        tabindex="0"
+        aria-label="افتح ظرف دعوة تخرج معن طه"
+        onclick="openEnvelope()"
+        onkeydown="handleEnvelopeKeydown(event)"
+        class="velvet-envelope w-full max-w-lg rounded-[2rem] p-6 sm:p-10 cursor-pointer flex flex-col items-center justify-between min-h-[370px] sm:min-h-[410px]"
+      >
+        <!-- طيّة الظرف وحافتها الذهبية والجيب السفلي -->
+        <div class="velvet-flap-trim" aria-hidden="true"></div>
+        <div class="velvet-flap-wrap" aria-hidden="true">
+          <div class="velvet-flap-face"></div>
+        </div>
+        <div class="velvet-pocket" aria-hidden="true"></div>
+
+        <!-- رأس الظرف -->
+        <div class="relative z-10 mt-1">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-gold-400/40 bg-royal-950/75 px-4 py-1 text-xs font-bold text-gold-300 shadow">
+            <span class="h-1.5 w-1.5 rounded-full bg-emeraldLux-400"></span>
+            <span>دعوة تخرج • جامعة المشرق</span>
+          </span>
+          <p class="text-xs sm:text-sm text-slate-300 mt-3">
+            يتشرف الخريج بدعوتكم لمشاركته فرحة التخرج
+          </p>
+          <h2 class="gold-foil-text text-2xl sm:text-4xl font-extrabold mt-1">
+            معن طه
+          </h2>
+          <p class="text-xs sm:text-sm font-semibold text-emeraldLux-400 mt-1">
+            جامعة المشرق
+          </p>
+        </div>
+
+        <!-- الختم الشمعي الذهبي «م.ط» -->
+        <div class="relative z-10 my-5 flex flex-col items-center">
+          <div
+            class="wax-seal-gold flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-full text-royal-950 font-amiri text-2xl sm:text-3xl font-bold select-none"
+            aria-label="ختم م.ط الذهبي"
+          >
+            م.ط
+          </div>
+          <span class="mt-3 text-xs font-medium text-gold-200/90 tracking-wide">
+            الجمعة، 27 نوفمبر 2026 • الساعة 12:00 ظهراً
+          </span>
+        </div>
+
+        <!-- زر فتح الظرف -->
+        <div class="relative z-10 w-full">
+          <button
+            type="button"
+            onclick="event.stopPropagation(); openEnvelope();"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-l from-gold-600 via-gold-400 to-gold-200 px-8 py-3.5 text-sm sm:text-base font-extrabold text-royal-950 shadow-lg shadow-gold-500/30 hover:brightness-105 active:scale-[0.99] transition"
+          >
+            <span>✦</span>
+            <span>فتح الدعوة</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- محتوى الدعوة المفتوحة بعد كسر الختم بنظام صفحات عند النقر -->
+    <div id="unfoldedInvitation" class="hidden space-y-5">
+
+      <!-- شريط تحكم علوي لإعادة إغلاق الظرف -->
+      <div class="flex items-center justify-between gap-2 px-1">
+        <span class="inline-flex items-center gap-2 rounded-full border border-emeraldLux-400/30 bg-emeraldLux-900/45 px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-emeraldLux-400">
+          <span>◆</span>
+          <span>معن طه • جامعة المشرق</span>
+        </span>
+
+        <button
+          type="button"
+          onclick="closeEnvelope()"
+          class="inline-flex items-center gap-1.5 rounded-xl border border-gold-400/40 bg-royal-800/85 px-3.5 py-2 text-xs sm:text-sm font-bold text-gold-300 hover:bg-gold-500/15 transition"
+        >
+          <span>✉️</span>
+          <span>إغلاق الظرف</span>
+        </button>
+      </div>
+
+      <!-- تبويبات التنقل بين الصفحات الثلاث عند النقر -->
+      <nav
+        aria-label="صفحات الدعوة"
+        role="tablist"
+        class="grid grid-cols-3 gap-2 rounded-2xl border border-gold-400/25 bg-royal-900/80 p-1.5 backdrop-blur-md shadow-lg"
+      >
+        <button
+          id="tab-btn-invitation"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="page-invitation"
+          onclick="switchPage('invitation')"
+          class="nav-tab-btn flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs sm:text-sm font-extrabold transition cursor-pointer"
+        >
+          <span>🎓</span>
+          <span>الدعوة</span>
+        </button>
+
+        <button
+          id="tab-btn-location"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="page-location"
+          onclick="switchPage('location')"
+          class="nav-tab-btn flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs sm:text-sm font-extrabold transition cursor-pointer"
+        >
+          <span>📍</span>
+          <span>الموقع</span>
+        </button>
+
+        <button
+          id="tab-btn-rsvp"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="page-rsvp"
+          onclick="switchPage('rsvp')"
+          class="nav-tab-btn flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs sm:text-sm font-extrabold transition cursor-pointer"
+        >
+          <span>💌</span>
+          <span>الحضور والتهاني</span>
+        </button>
+      </nav>
+
+      <!-- 1) صفحة الدعوة (الدعوة) -->
+      <section id="page-invitation" role="tabpanel" aria-labelledby="tab-btn-invitation" class="regal-card regal-reveal rounded-[2rem] p-4 sm:p-6 relative overflow-hidden">
+        <!-- شريط ذهبي وزمرّدي علوي -->
+        <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emeraldLux-700 via-gold-400 to-emeraldLux-700"></div>
+
+        <div class="regal-inner-frame rounded-[1.5rem] px-5 py-7 sm:px-9 sm:py-9 text-center">
+          <!-- البسملة والآية الكريمة -->
+          <p class="font-amiri text-xl sm:text-2xl text-gold-300 mb-2">
+            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+          </p>
+          <p class="font-amiri text-base sm:text-lg text-slate-200 leading-relaxed mb-6">
+            «وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ»
+          </p>
+
+          <!-- فاصل زخرفي مع رمز التخرج -->
+          <div class="flex items-center justify-center gap-3 mb-5">
+            <span class="h-px w-14 sm:w-20 bg-gradient-to-l from-gold-400/70 to-transparent"></span>
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-gold-400/45 bg-gold-500/10 text-2xl shadow-lg" aria-hidden="true">
+              🎓
+            </span>
+            <span class="h-px w-14 sm:w-20 bg-gradient-to-r from-gold-400/70 to-transparent"></span>
+          </div>
+
+          <p class="text-xs sm:text-sm font-bold tracking-wider text-emeraldLux-400 mb-1.5">
+            دعوة لمشاركة فرحة التخرج
+          </p>
+          <h1 class="gold-foil-text text-3xl sm:text-5xl font-extrabold mb-2 leading-tight">
+            معن طه
+          </h1>
+          <div class="inline-flex items-center gap-2 rounded-full border border-emeraldLux-400/35 bg-emeraldLux-900/45 px-4 py-1 text-xs sm:text-sm font-bold text-emeraldLux-400 mb-4">
+            <span>🏛️</span>
+            <span>خريج جامعة المشرق</span>
+          </div>
+
+          <!-- رسالة الدعوة -->
+          <p class="text-slate-200/90 text-sm sm:text-base leading-8 max-w-xl mx-auto mb-7">
+            بقلوب يغمرها الفرح والامتنان، وبمشاعر الفخر بإتمام مرحلة مليئة بالاجتهاد والمثابرة في <strong class="text-emeraldLux-400 font-bold">جامعة المشرق</strong>، يسرّ <strong class="text-gold-200 font-bold">معن طه</strong> دعوتكم لمشاركته فرحة التخرج والاحتفاء بهذا الإنجاز المميز.
+          </p>
+
+          <!-- تفاصيل الموعد: التاريخ والوقت -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-7 text-right">
+            <div class="rounded-2xl border border-gold-400/30 bg-royal-950/65 p-4 flex items-center gap-3.5">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-500/15 text-xl border border-gold-400/35">
+                📅
+              </div>
+              <div>
+                <div class="text-xs text-gold-300 font-medium">التاريخ</div>
+                <div class="text-sm sm:text-base font-bold text-white mt-0.5">
+                  الجمعة، 27 نوفمبر 2026
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-gold-400/30 bg-royal-950/65 p-4 flex items-center gap-3.5">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emeraldLux-700/35 text-xl border border-emeraldLux-400/35">
+                🕛
+              </div>
+              <div>
+                <div class="text-xs text-emeraldLux-400 font-medium">الوقت</div>
+                <div class="text-sm sm:text-base font-bold text-white mt-0.5">
+                  الساعة 12:00 ظهراً
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- العداد التنازلي المباشر -->
+          <div class="rounded-2xl border border-gold-400/30 bg-royal-950/75 p-4 sm:p-5 mb-7">
+            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm font-bold text-gold-300 mb-3.5">
+              <span>⏳</span>
+              <span id="countdownStatusLabel">العد التنازلي لحفل التخرج</span>
+            </div>
+
+            <div id="countdownGrid" class="grid grid-cols-4 gap-2 sm:gap-3">
+              <div class="rounded-xl border border-gold-400/15 bg-white/[0.03] py-2.5 px-1">
+                <div id="cdDays" class="text-xl sm:text-2xl font-extrabold text-gold-300 tabular-nums">00</div>
+                <div class="text-[11px] sm:text-xs text-slate-300 mt-0.5">أيام</div>
+              </div>
+              <div class="rounded-xl border border-gold-400/15 bg-white/[0.03] py-2.5 px-1">
+                <div id="cdHours" class="text-xl sm:text-2xl font-extrabold text-gold-300 tabular-nums">00</div>
+                <div class="text-[11px] sm:text-xs text-slate-300 mt-0.5">ساعات</div>
+              </div>
+              <div class="rounded-xl border border-gold-400/15 bg-white/[0.03] py-2.5 px-1">
+                <div id="cdMinutes" class="text-xl sm:text-2xl font-extrabold text-gold-300 tabular-nums">00</div>
+                <div class="text-[11px] sm:text-xs text-slate-300 mt-0.5">دقائق</div>
+              </div>
+              <div class="rounded-xl border border-gold-400/15 bg-white/[0.03] py-2.5 px-1">
+                <div id="cdSeconds" class="text-xl sm:text-2xl font-extrabold text-gold-300 tabular-nums">00</div>
+                <div class="text-[11px] sm:text-xs text-slate-300 mt-0.5">ثواني</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- إجراءات سريعة: التقويم (.ics) + نسخ نص الدعوة + الانتقال للموقع -->
+          <div class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button
+                type="button"
+                onclick="downloadICS()"
+                class="flex w-full items-center justify-center gap-2 rounded-2xl border border-emeraldLux-400/40 bg-emeraldLux-900/40 px-4 py-3.5 text-sm font-bold text-emeraldLux-400 hover:bg-emeraldLux-900/70 active:scale-[0.99] transition"
+              >
+                <span>📆</span>
+                <span>إضافة إلى التقويم (.ics)</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="copyInvitationText()"
+                class="flex w-full items-center justify-center gap-2 rounded-2xl border border-gold-400/35 bg-white/[0.04] px-4 py-3.5 text-sm font-bold text-gold-200 hover:bg-gold-500/15 active:scale-[0.99] transition"
+              >
+                <span>📋</span>
+                <span id="copyBtnLabel">نسخ نص الدعوة</span>
+              </button>
+            </div>
+
+            <button
+              type="button"
+              onclick="switchPage('location')"
+              class="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-l from-gold-600 via-gold-400 to-gold-200 px-6 py-3.5 text-sm sm:text-base font-extrabold text-royal-950 shadow-lg shadow-gold-500/20 hover:brightness-105 active:scale-[0.99] transition"
+            >
+              <span>📍</span>
+              <span>عرض تفاصيل الموقع والوصول</span>
+            </button>
+          </div>
+
+          <!-- عبارة ختامية -->
+          <p class="mt-7 pt-5 border-t border-gold-400/15 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            حضوركم يزيد الفرحة فرحاً، ومشاركتكم هي أجمل تتويج لمسيرة تخرجي من جامعة المشرق.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2) صفحة الموقع والوصول (الموقع) -->
+      <section id="page-location" role="tabpanel" aria-labelledby="tab-btn-location" class="hidden regal-card rounded-[2rem] p-4 sm:p-6 relative overflow-hidden">
+        <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emeraldLux-700 via-gold-400 to-emeraldLux-700"></div>
+
+        <div class="regal-inner-frame rounded-[1.5rem] px-5 py-7 sm:px-9 sm:py-9 text-right">
+          <div class="text-center mb-6">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-gold-400/45 bg-gold-500/10 text-2xl shadow-lg mb-3" aria-hidden="true">
+              📍
+            </span>
+            <h2 class="gold-foil-text text-2xl sm:text-4xl font-extrabold">
+              الموقع والوصول
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1.5">
+              تفاصيل موعد ومكان مشاركة فرحة تخرج <strong class="text-gold-200">معن طه</strong> • <strong class="text-emeraldLux-400">جامعة المشرق</strong>
+            </p>
+          </div>
+
+          <!-- بطاقات معلومات الموعد -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+            <div class="rounded-2xl border border-gold-400/30 bg-royal-950/65 p-4">
+              <div class="text-xs text-gold-300 font-medium">📅 التاريخ</div>
+              <div class="text-sm sm:text-base font-bold text-white mt-1">الجمعة، 27 نوفمبر 2026</div>
+            </div>
+            <div class="rounded-2xl border border-gold-400/30 bg-royal-950/65 p-4">
+              <div class="text-xs text-emeraldLux-400 font-medium">🕛 الوقت</div>
+              <div class="text-sm sm:text-base font-bold text-white mt-1">الساعة 12:00 ظهراً</div>
+            </div>
+          </div>
+
+          <!-- زر فتح الموقع عبر Waze -->
+          <a
+            href="https://waze.com/ul/hsvzt1rxx0"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-l from-gold-600 via-gold-400 to-gold-200 px-6 py-4 text-base sm:text-lg font-extrabold text-royal-950 shadow-lg shadow-gold-500/25 hover:brightness-105 active:scale-[0.99] transition mb-6"
+          >
+            <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+            </svg>
+            <span>فتح الموقع عبر Waze</span>
+          </a>
+
+          <!-- ملاحظات الوصول -->
+          <div class="rounded-2xl border border-emeraldLux-400/25 bg-royal-950/70 p-4 sm:p-5 space-y-2.5">
+            <h3 class="text-sm font-extrabold text-emeraldLux-400 flex items-center gap-2">
+              <span>🧭</span>
+              <span>ملاحظات الوصول والحضور</span>
+            </h3>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-200/90 leading-relaxed list-disc pr-4">
+              <li>يُفضّل تشغيل تطبيق <strong class="text-gold-200">Waze</strong> قبل التحرك بوقت كافٍ لمتابعة مسار الطريق المباشر.</li>
+              <li>الموعد المحدد هو <strong class="text-white">الساعة 12:00 ظهراً</strong> يوم <strong class="text-white">الجمعة 27 نوفمبر 2026</strong>.</li>
+              <li>يمكنك تأكيد حضورك أو ترك تهنئة مباشرة من صفحة <strong class="text-gold-300">الحضور والتهاني</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) صفحة الحضور والتهاني (الحضور والتهاني) -->
+      <section id="page-rsvp" role="tabpanel" aria-labelledby="tab-btn-rsvp" class="hidden regal-card rounded-[2rem] p-6 sm:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-2">
+              <span>💌</span>
+              <span>تأكيد الحضور والتهاني</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">
+              يسعدنا تسجيل حضورك وترك كلمة تهنئة للخريج <strong class="text-gold-300">معن طه</strong> • <strong class="text-emeraldLux-400">جامعة المشرق</strong>
+            </p>
+          </div>
+
+          <span id="rsvpCounterBadge" class="rounded-full border border-gold-400/35 bg-gold-500/10 px-3 py-1 text-xs font-bold text-gold-300">
+            0 مشاركة
+          </span>
+        </div>
+
+        <form id="rsvpForm" class="space-y-4">
+          <div>
+            <label for="guestName" class="block text-xs sm:text-sm font-bold text-gold-300 mb-1.5">
+              الاسم الكريم <span class="text-amber-400">*</span>
+            </label>
+            <input
+              id="guestName"
+              name="guestName"
+              type="text"
+              required
+              maxlength="80"
+              placeholder="اكتب اسمك هنا..."
+              class="w-full rounded-xl border border-white/15 bg-royal-950/80 px-4 py-3 text-sm text-white placeholder-slate-400 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400/25 transition"
+            />
+          </div>
+
+          <div>
+            <label for="attendanceStatus" class="block text-xs sm:text-sm font-bold text-gold-300 mb-1.5">
+              حالة الحضور
+            </label>
+            <select
+              id="attendanceStatus"
+              name="attendanceStatus"
+              class="w-full rounded-xl border border-white/15 bg-royal-950/80 px-4 py-3 text-sm text-white focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400/25 transition"
+            >
+              <option value="attending">سأحضر بإذن الله</option>
+              <option value="congratulating">أعتذر عن الحضور وأرسل تهنئتي</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="congratulationMsg" class="block text-xs sm:text-sm font-bold text-gold-300 mb-1.5">
+              رسالة تهنئة أو ملاحظة
+            </label>
+            <textarea
+              id="congratulationMsg"
+              name="congratulationMsg"
+              rows="3"
+              maxlength="300"
+              placeholder="ألف مبروك التخرج يا معن، ومنها للأعلى دائماً..."
+              class="w-full rounded-xl border border-white/15 bg-royal-950/80 px-4 py-3 text-sm text-white placeholder-slate-400 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400/25 transition resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-2xl bg-gradient-to-l from-gold-600 via-gold-400 to-gold-200 px-5 py-3.5 text-sm sm:text-base font-extrabold text-royal-950 shadow-md hover:brightness-105 active:scale-[0.99] transition"
+          >
+            إرسال تأكيد الحضور والتهنئة
+          </button>
+        </form>
+
+        <div class="mt-7 pt-6 border-t border-white/10">
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="text-sm sm:text-base font-bold text-gold-300">سجل الحضور والتهاني</h3>
+            <button
+              type="button"
+              onclick="resetToSampleEntries()"
+              class="text-xs text-slate-400 hover:text-gold-300 underline underline-offset-4 transition"
+            >
+              استعادة التهاني الافتراضية
+            </button>
+          </div>
+
+          <div id="entriesList" class="custom-scroll max-h-80 overflow-y-auto space-y-3 pl-1"></div>
+        </div>
+      </section>
+
+      <!-- تذييل الصفحة -->
+      <footer class="pt-2 text-center text-xs text-slate-400">
+        دعوة تخرج <span class="text-gold-300 font-semibold">معن طه</span> • <span class="text-emeraldLux-400 font-semibold">جامعة المشرق</span> • الجمعة 27 نوفمبر 2026
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // إعدادات الحفل الأساسية
+    const INVITATION_CONFIG = {
+      graduateName: 'معن طه',
+      universityName: 'جامعة المشرق',
+      eventTitle: 'حفل تخرج معن طه — جامعة المشرق',
+      dateText: 'الجمعة، 27 نوفمبر 2026',
+      timeText: 'الساعة 12:00 ظهراً',
+      wazeUrl: 'https://waze.com/ul/hsvzt1rxx0',
+      // الجمعة 27 نوفمبر 2026 الساعة 12:00 ظهراً بتوقيت بغداد (+03:00)
+      targetMs: Date.parse('2026-11-27T12:00:00+03:00'),
+      storageKey: 'maan_taha_mashriq_invitation_rsvp_v1'
+    };
+
+    // تهانٍ أولية جاهزة للعرض عند فتح السجل لأول مرة
+    const INITIAL_GUESTBOOK = [
+      {
+        id: 'init-1',
+        name: 'عائلة طه الكرام',
+        status: 'attending',
+        message: 'ألف مبارك يا معن هذا التخرج المشرف من جامعة المشرق، نفخر بك ونتمنى لك مستقبلاً مليئاً بالنجاح والتوفيق.',
+        createdAt: 'منذ قليل'
+      },
+      {
+        id: 'init-2',
+        name: 'زملاء جامعة المشرق',
+        status: 'attending',
+        message: 'مبارك التخرج يا معن، سنكون في الموعد يوم الجمعة الساعة 12 ظهراً لمشاركتك هذه الفرحة الغالية.',
+        createdAt: 'منذ قليل'
+      }
+    ];
+
+    let toastTimeout = null;
+    let envelopeRevealTimer = null;
+
+    /**
+     * التنقل بين صفحات الدعوة الثلاث عند النقر على التبويبات
+     */
+    function switchPage(pageKey) {
+      const pages = {
+        invitation: document.getElementById('page-invitation'),
+        location: document.getElementById('page-location'),
+        rsvp: document.getElementById('page-rsvp')
+      };
+
+      const tabs = {
+        invitation: document.getElementById('tab-btn-invitation'),
+        location: document.getElementById('tab-btn-location'),
+        rsvp: document.getElementById('tab-btn-rsvp')
+      };
+
+      const validKey = pages[pageKey] ? pageKey : 'invitation';
+
+      Object.keys(pages).forEach((key) => {
+        const pageEl = pages[key];
+        const tabEl = tabs[key];
+        const isSelected = key === validKey;
+
+        if (pageEl) {
+          pageEl.classList.remove('tab-page-enter', 'regal-reveal');
+          if (isSelected) {
+            pageEl.classList.remove('hidden');
+            void pageEl.offsetWidth;
+            pageEl.classList.add('tab-page-enter');
+          } else {
+            pageEl.classList.add('hidden');
+          }
+        }
+
+        if (tabEl) {
+          tabEl.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * توليد جزيئات ذهبية هادئة في الخلفية
+     */
+    function createAmbientSparkles() {
+      const container = document.getElementById('ambientSparkles');
+      if (!container) return;
+
+      const count = 18;
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'sparkle-dot';
+        const size = (Math.random() * 4 + 2.5).toFixed(1);
+        dot.style.width = size + 'px';
+        dot.style.height = size + 'px';
+        dot.style.left = (Math.random() * 96 + 2).toFixed(1) + '%';
+        dot.style.top = (Math.random() * 92 + 4).toFixed(1) + '%';
+        dot.style.setProperty('--dur', (Math.random() * 5 + 5.5).toFixed(1) + 's');
+        dot.style.setProperty('--delay', (Math.random() * 4).toFixed(1) + 's');
+        dot.style.setProperty('--peak-opacity', (Math.random() * 0.35 + 0.25).toFixed(2));
+        container.appendChild(dot);
+      }
+    }
+
+    /**
+     * إطلاق وميض ذهبي واندفاع قصاصات احتفالية ناعمة عند فتح الظرف
+     */
+    function triggerCelebrationBurst() {
+      const layer = document.getElementById('celebrationLayer');
+      if (!layer) return;
+
+      layer.innerHTML = '';
+
+      // موجة وميض ذهبية متوسعة
+      const wave = document.createElement('div');
+      wave.className = 'shimmer-wave';
+      layer.appendChild(wave);
+
+      const palette = ['#fdf2c2', '#f7e296', '#d4af37', '#aa8218', '#2dd4bf', '#ffffff'];
+      const piecesCount = 46;
+
+      for (let i = 0; i < piecesCount; i++) {
+        const piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+
+        const angle = (Math.PI * 2 * i) / piecesCount + (Math.random() - 0.5) * 0.35;
+        const distance = Math.random() * 240 + 110;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance + Math.random() * 95 + 30;
+        const rot = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 540 + 240);
+
+        const isSpark = i % 4 === 0;
+        piece.style.setProperty('--w', isSpark ? '8px' : (Math.random() * 7 + 6).toFixed(0) + 'px');
+        piece.style.setProperty('--h', isSpark ? '8px' : (Math.random() * 5 + 4).toFixed(0) + 'px');
+        piece.style.setProperty('--r', isSpark ? '9999px' : '2px');
+        piece.style.setProperty('--c', palette[i % palette.length]);
+        piece.style.setProperty('--tx', tx.toFixed(0) + 'px');
+        piece.style.setProperty('--ty', ty.toFixed(0) + 'px');
+        piece.style.setProperty('--rot', rot.toFixed(0) + 'deg');
+        piece.style.setProperty('--cdur', (Math.random() * 0.7 + 1.35).toFixed(2) + 's');
+        piece.style.setProperty('--cdelay', (Math.random() * 0.14).toFixed(2) + 's');
+
+        layer.appendChild(piece);
+      }
+
+      setTimeout(() => {
+        if (layer) layer.innerHTML = '';
+      }, 2200);
+    }
+
+    /**
+     * فتح الظرف ثلاثي الأبعاد وإظهار بطاقة الدعوة الملكية
+     */
+    function openEnvelope() {
+      const envelopeSection = document.getElementById('envelopeSection');
+      const envelopeEl = document.getElementById('velvetEnvelope');
+      const unfoldedEl = document.getElementById('unfoldedInvitation');
+
+      if (!envelopeSection || !envelopeEl || !unfoldedEl) return;
+
+      envelopeEl.classList.add('is-opening');
+      triggerCelebrationBurst();
+
+      clearTimeout(envelopeRevealTimer);
+      envelopeRevealTimer = setTimeout(() => {
+        envelopeSection.classList.add('hidden');
+        unfoldedEl.classList.remove('hidden');
+        switchPage('invitation');
+      }, 540);
+    }
+
+    /**
+     * إعادة إغلاق الظرف والعودة إلى واجهة الظرف المختوم
+     */
+    function closeEnvelope() {
+      const envelopeSection = document.getElementById('envelopeSection');
+      const envelopeEl = document.getElementById('velvetEnvelope');
+      const unfoldedEl = document.getElementById('unfoldedInvitation');
+
+      if (!envelopeSection || !envelopeEl || !unfoldedEl) return;
+
+      clearTimeout(envelopeRevealTimer);
+      unfoldedEl.classList.add('hidden');
+      envelopeSection.classList.remove('hidden');
+      envelopeEl.classList.remove('is-opening');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleEnvelopeKeydown(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openEnvelope();
+      }
+    }
+
+    /**
+     * عرض تنبيه عائم أنيق
+     */
+    function showToast(message, isError = false) {
+      const banner = document.getElementById('toastBanner');
+      const inner = document.getElementById('toastInner');
+      const msgEl = document.getElementById('toastMessage');
+      if (!banner || !inner || !msgEl) return;
+
+      msgEl.textContent = message;
+      inner.className = isError
+        ? 'flex items-center justify-between gap-3 rounded-2xl border border-amber-400/60 bg-royal-800/95 px-4 py-3 text-sm font-medium text-amber-200 shadow-2xl backdrop-blur-md'
+        : 'flex items-center justify-between gap-3 rounded-2xl border border-gold-400/55 bg-royal-800/95 px-4 py-3 text-sm font-medium text-gold-200 shadow-2xl backdrop-blur-md';
+
+      banner.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+      banner.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(hideToast, 3400);
+    }
+
+    function hideToast() {
+      const banner = document.getElementById('toastBanner');
+      if (!banner) return;
+      banner.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+      banner.classList.remove('opacity-100', 'translate-y-0');
+    }
+
+    /**
+     * تحديث العداد التنازلي حتى 27 نوفمبر 2026 الساعة 12:00 ظهراً (+03:00 / Asia/Baghdad)
+     */
+    function updateCountdown() {
+      const diff = INVITATION_CONFIG.targetMs - Date.now();
+      const daysEl = document.getElementById('cdDays');
+      const hoursEl = document.getElementById('cdHours');
+      const minutesEl = document.getElementById('cdMinutes');
+      const secondsEl = document.getElementById('cdSeconds');
+      const labelEl = document.getElementById('countdownStatusLabel');
+
+      if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+      if (diff <= 0) {
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+        if (labelEl) {
+          labelEl.textContent = 'حان موعد حفل التخرج — ألف مبروك لمعن طه!';
+        }
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    /**
+     * إنشاء وتحميل ملف تقويم (.ics) بموعد 27 نوفمبر 2026 الساعة 12:00 ظهراً (+03:00)
+     */
+    function downloadICS() {
+      try {
+        // 2026-11-27 12:00:00 +03:00 يساوي 2026-11-27 09:00:00 UTC
+        const dtStart = '20261127T090000Z';
+        const dtEnd = '20261127T120000Z';
+        const dtStamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+        const description = [
+          'دعوة لمشاركة معن طه فرحة التخرج من جامعة المشرق يوم الجمعة 27 نوفمبر 2026 الساعة 12:00 ظهراً.',
+          'موقع الحفل عبر Waze: ' + INVITATION_CONFIG.wazeUrl
+        ].join('\\n');
+
+        const icsData = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Maan Taha Mashriq Graduation Invitation//AR',
+          'CALSCALE:GREGORIAN',
+          'METHOD:PUBLISH',
+          'BEGIN:VEVENT',
+          'UID:maan-taha-mashriq-20261127@invitation',
+          'DTSTAMP:' + dtStamp,
+          'DTSTART:' + dtStart,
+          'DTEND:' + dtEnd,
+          'SUMMARY:' + INVITATION_CONFIG.eventTitle,
+          'DESCRIPTION:' + description,
+          'LOCATION:' + INVITATION_CONFIG.wazeUrl,
+          'URL:' + INVITATION_CONFIG.wazeUrl,
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+        const blobUrl = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'دعوة-تخرج-معن-طه.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+        showToast('تم تحميل ملف التقويم (.ics) بنجاح');
+      } catch (err) {
+        showToast('تعذر تحميل ملف التقويم، يرجى المحاولة مرة أخرى', true);
+      }
+    }
+
+    /**
+     * نسخ نص الدعوة الكامل مع رابط Waze
+     */
+    function copyInvitationText() {
+      const text = [
+        'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ',
+        '«وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ»',
+        '🎓 دعوة حفل تخرج — ' + INVITATION_CONFIG.graduateName,
+        '🏛️ الجامعة: ' + INVITATION_CONFIG.universityName,
+        'بقلوب يغمرها الفرح والامتنان، وبمشاعر الفخر بإتمام مرحلة مليئة بالاجتهاد والمثابرة، يسرّ معن طه دعوتكم لمشاركته فرحة التخرج والاحتفاء بهذا الإنجاز المميز.',
+        '📅 التاريخ: ' + INVITATION_CONFIG.dateText,
+        '🕛 الوقت: ' + INVITATION_CONFIG.timeText,
+        '📍 موقع الحفل عبر Waze: ' + INVITATION_CONFIG.wazeUrl,
+        'حضوركم يزيد الفرحة فرحاً، ومشاركتكم هي أجمل تتويج لهذه المسيرة.'
+      ].join('\n');
+
+      const labelEl = document.getElementById('copyBtnLabel');
+
+      const onCopied = () => {
+        if (labelEl) {
+          const prevText = labelEl.textContent;
+          labelEl.textContent = 'تم النسخ ✓';
+          setTimeout(() => {
+            labelEl.textContent = prevText || 'نسخ نص الدعوة';
+          }, 2200);
+        }
+        showToast('تم نسخ نص الدعوة ورابط Waze بنجاح');
+      };
+
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (ok) {
+          onCopied();
+          return;
+        }
+      } catch (_) {}
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(text)
+          .then(onCopied)
+          .catch(() => showToast('تعذر النسخ تلقائياً، يرجى النسخ يدوياً', true));
+      } else {
+        showToast('تعذر النسخ تلقائياً، يرجى النسخ يدوياً', true);
+      }
+    }
+
+    function loadGuestbook() {
+      try {
+        const raw = localStorage.getItem(INVITATION_CONFIG.storageKey);
+        if (!raw) {
+          localStorage.setItem(INVITATION_CONFIG.storageKey, JSON.stringify(INITIAL_GUESTBOOK));
+          return [...INITIAL_GUESTBOOK];
+        }
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [...INITIAL_GUESTBOOK];
+      } catch (err) {
+        return [...INITIAL_GUESTBOOK];
+      }
+    }
+
+    function saveGuestbook(items) {
+      try {
+        localStorage.setItem(INVITATION_CONFIG.storageKey, JSON.stringify(items));
+      } catch (err) {
+        showToast('تعذر حفظ المشاركة في المتصفح', true);
+      }
+    }
+
+    function buildEntryNode(item) {
+      const article = document.createElement('article');
+      article.className = 'rounded-2xl border border-white/10 bg-royal-950/70 p-4 text-right transition hover:border-gold-400/35';
+
+      const header = document.createElement('div');
+      header.className = 'flex flex-wrap items-center justify-between gap-2 mb-1.5';
+
+      const nameNode = document.createElement('div');
+      nameNode.className = 'text-sm font-bold text-white';
+      nameNode.textContent = item.name;
+
+      const badgeNode = document.createElement('span');
+      const isAttending = item.status === 'attending';
+      badgeNode.className = isAttending
+        ? 'inline-flex items-center gap-1 rounded-full bg-emeraldLux-900/60 border border-emeraldLux-400/40 px-2.5 py-0.5 text-[11px] font-bold text-emeraldLux-400'
+        : 'inline-flex items-center gap-1 rounded-full bg-gold-500/15 border border-gold-400/40 px-2.5 py-0.5 text-[11px] font-bold text-gold-300';
+      badgeNode.textContent = isAttending ? '✓ مؤكد للحضور' : '✦ تهنئة طيبة';
+
+      header.appendChild(nameNode);
+      header.appendChild(badgeNode);
+      article.appendChild(header);
+
+      if (item.message && item.message.trim()) {
+        const msgNode = document.createElement('p');
+        msgNode.className = 'text-xs sm:text-sm text-slate-200/90 leading-relaxed mt-1';
+        msgNode.textContent = item.message.trim();
+        article.appendChild(msgNode);
+      }
+
+      if (item.createdAt) {
+        const timeNode = document.createElement('div');
+        timeNode.className = 'text-[11px] text-slate-400 mt-2';
+        timeNode.textContent = item.createdAt;
+        article.appendChild(timeNode);
+      }
+
+      return article;
+    }
+
+    function renderGuestbook() {
+      const listContainer = document.getElementById('entriesList');
+      const counterBadge = document.getElementById('rsvpCounterBadge');
+      if (!listContainer) return;
+
+      const entries = loadGuestbook();
+      listContainer.innerHTML = '';
+
+      if (counterBadge) {
+        counterBadge.textContent = entries.length === 1 ? 'مشاركة واحدة' : `${entries.length} مشاركات`;
+      }
+
+      if (entries.length === 0) {
+        const emptyBox = document.createElement('div');
+        emptyBox.className = 'rounded-2xl border border-dashed border-white/15 py-8 px-4 text-center text-xs sm:text-sm text-slate-400';
+        emptyBox.textContent = 'لا توجد مشاركات مسجلة بعد. كن أول من يرسل تهنئة لمعن طه!';
+        listContainer.appendChild(emptyBox);
+        return;
+      }
+
+      entries.forEach((entry) => {
+        listContainer.appendChild(buildEntryNode(entry));
+      });
+    }
+
+    function resetToSampleEntries() {
+      saveGuestbook(INITIAL_GUESTBOOK);
+      renderGuestbook();
+      showToast('تمت استعادة التهاني الافتراضية');
+    }
+
+    function initGuestbookForm() {
+      const form = document.getElementById('rsvpForm');
+      if (!form) return;
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const nameInput = document.getElementById('guestName');
+        const statusInput = document.getElementById('attendanceStatus');
+        const msgInput = document.getElementById('congratulationMsg');
+
+        const guestName = nameInput ? nameInput.value.trim() : '';
+        const status = statusInput ? statusInput.value : 'attending';
+        const message = msgInput ? msgInput.value.trim() : '';
+
+        if (!guestName) {
+          showToast('يرجى إدخال الاسم الكريم أولاً', true);
+          if (nameInput) nameInput.focus();
+          return;
+        }
+
+        const formattedDate = new Intl.DateTimeFormat('ar-IQ', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        }).format(new Date());
+
+        const newEntry = {
+          id: 'entry-' + Date.now(),
+          name: guestName,
+          status: status,
+          message: message || (status === 'attending'
+            ? 'سأشارككم فرحة التخرج بإذن الله، ألف مبروك!'
+            : 'أجمل التهاني والتبريكات بمناسبة التخرج.'),
+          createdAt: formattedDate
+        };
+
+        const currentList = loadGuestbook();
+        currentList.unshift(newEntry);
+        saveGuestbook(currentList);
+        renderGuestbook();
+
+        form.reset();
+        showToast('تم تسجيل حضورك وتهنئتك بنجاح');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      createAmbientSparkles();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      initGuestbookForm();
+      renderGuestbook();
+    });
+  </script>
+</body>
+</html>
